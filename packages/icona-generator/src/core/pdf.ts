@@ -38,6 +38,7 @@ export const generatePDF = ({
 
     const svgPath = resolve(projectPath, path, `${name}.pdf`);
     const pdfDoc = new PDFDocument(pdfkitConfig);
+    pdfDoc.info.CreationDate = new Date(0);
     SVGtoPDF(pdfDoc, svg, x, y, restSvgToPdfOptions);
     pdfDoc.pipe(createWriteStream(svgPath));
     pdfDoc.end();
